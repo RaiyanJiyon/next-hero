@@ -1,11 +1,27 @@
 "use client"
-import LoginPage from "@/app/login/page";
+import LoginPage from "@/app/(auth)/login/page";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
     const pathName = usePathname();
     const router = useRouter();
+
+    if (pathName.includes("/dashboard")) {
+        return <nav className="bg-red-300 font-bold">
+            <ul className="flex justify-between items-center">
+                <li>
+                    <Link href={"/"}>Home</Link>
+                </li>
+                <li>
+                    <Link href={"/"}>Admin Home</Link>
+                </li>
+                <li>
+                    <Link href={"/"}>Recruiter Home</Link>
+                </li>
+            </ul>
+        </nav>
+    }
 
     const links = [
         {
@@ -23,6 +39,18 @@ const Navbar = () => {
         {
             "title": "Blogs",
             "path": "/blogs"
+        },
+        {
+            "title": "Posts",
+            "path": "/posts"
+        },
+        {
+            "title": "Features",
+            "path": "/features"
+        },
+        {
+            "title": "Dashboard",
+            "path": "/dashboard"
         },
     ];
 
